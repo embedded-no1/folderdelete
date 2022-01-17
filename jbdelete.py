@@ -1,6 +1,9 @@
-import os
+import os,shutil
 
 place = input ('')
-print (place)
-for f in os.listdir(place):
-    os.remove(os.path.join(place,f))
+for files in os.listdir(place):
+    path = os.path.join(place, files)
+    try:
+        shutil.rmtree(path)
+    except OSError:
+        os.remove(path)
